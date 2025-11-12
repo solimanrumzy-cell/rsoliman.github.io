@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f9fafb;
+      background: linear-gradient(135deg, #f7f9fc, #e3e9f0);
       color: #1a1a1a;
       margin: 0;
       padding: 0;
@@ -18,44 +18,52 @@
     }
     .card {
       background: white;
-      padding: 2rem;
+      padding: 2.5rem 2rem;
       border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       text-align: center;
-      max-width: 400px;
+      max-width: 420px;
+      width: 90%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     }
     h1 {
       margin: 0;
-      font-size: 1.8rem;
+      font-size: 1.9rem;
+      letter-spacing: 0.5px;
     }
     h2 {
       color: #555;
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: normal;
+      margin-top: 0.4rem;
     }
-    .qr {
-      margin: 1.5rem 0;
-    }
-    img {
-      width: 150px;
-      height: 150px;
-      object-fit: contain;
+    .tagline {
+      margin-top: 1.5rem;
+      color: #444;
+      font-size: 1rem;
+      line-height: 1.6;
     }
     .contact {
-      margin-top: 1rem;
-      font-size: 0.95rem;
+      margin-top: 2rem;
+      font-size: 1rem;
       color: #333;
     }
     .contact strong {
       display: block;
-      margin-top: 0.5rem;
+      margin-top: 0.3rem;
+      font-size: 1.05rem;
     }
     a {
-      display: block;
-      margin-top: 0.5rem;
-      text-decoration: none;
-      color: #0077ff;
+      color: #0078ff;
       font-weight: 500;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -64,20 +72,17 @@
     <h1>R. Soliman</h1>
     <h2>Licensed Realtor | Samson Properties</h2>
 
-    <div class="qr">
-      <img src="qr.png" alt="QR Code" />
+    <div class="tagline">
+      Helping clients across Northern Virginia with<br>
+      Residential Buying, Selling & Renting<br>
+      as well as Commercial Properties and Investments.
     </div>
 
     <div class="contact">
       📍 Northern Virginia<br>
-      📞 <strong>(555) 123-4567</strong>
-      📧 <strong>r@rsoliman.com</strong>
+      📞 <strong>571&nbsp;999&nbsp;4356</strong>
+      📧 <strong><a href="mailto:soliman@solimanre.com">soliman@solimanre.com</a></strong>
     </div>
-
-    <a href="https://www.instagram.com/yourhandle" target="_blank">Instagram</a>
-    <a href="https://www.linkedin.com/in/yourhandle" target="_blank">LinkedIn</a>
   </div>
 </body>
 </html>
-
-
