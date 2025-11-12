@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R. Soliman | Virginia Realtor</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f9fafb;
+      color: #1a1a1a;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    h2 {
+      color: #555;
+      font-size: 1rem;
+      font-weight: normal;
+    }
+    .qr {
+      margin: 1.5rem 0;
+    }
+    img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+    }
+    .contact {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #333;
+    }
+    .contact strong {
+      display: block;
+      margin-top: 0.5rem;
+    }
+    a {
+      display: block;
+      margin-top: 0.5rem;
+      text-decoration: none;
+      color: #0077ff;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>R. Soliman</h1>
+    <h2>Licensed Realtor | Samson Properties</h2>
+
+    <div class="qr">
+      <img src="qr.png" alt="QR Code" />
+    </div>
+
+    <div class="contact">
+      📍 Northern Virginia<br>
+      📞 <strong>(555) 123-4567</strong>
+      📧 <strong>r@rsoliman.com</strong>
+    </div>
+
+    <a href="https://www.instagram.com/yourhandle" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/in/yourhandle" target="_blank">LinkedIn</a>
+  </div>
+</body>
+</html>
