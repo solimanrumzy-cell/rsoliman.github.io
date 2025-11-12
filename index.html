@@ -3,86 +3,435 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>R. Soliman | Virginia Realtor</title>
+  <title>Rumzy Soliman | Virginia Realtor</title>
   <style>
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #f7f9fc, #e3e9f0);
-      color: #1a1a1a;
+      color: #e0e0e0;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
+      position: relative;
+      background: radial-gradient(circle at top left, #202225, #18191b, #111113);
+      overflow-x: hidden;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 270deg at 50% 50%, #1e2023, #2d3035, #141518, #1b1d20, #2d3035);
+      animation: rotateBackground 45s linear infinite;
+      z-index: -2;
+      opacity: 0.6;
+    }
+
+    @keyframes rotateBackground {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .light {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0,168,255,0.15), transparent 70%);
+      border-radius: 50%;
+      filter: blur(100px);
+      animation: floatLight 18s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    .light:nth-child(1) { top: 10%; left: 15%; }
+    .light:nth-child(2) { top: 55%; right: 15%; animation-delay: 6s; }
+    .light:nth-child(3) { bottom: 10%; left: 45%; animation-delay: 12s; }
+
+    @keyframes floatLight {
+      from { transform: translateY(0px) translateX(0px); opacity: 0.4; }
+      to { transform: translateY(25px) translateX(40px); opacity: 0.7; }
+    }
+
+    header {
+      width: 100%;
+      background: rgba(25, 26, 28, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
       display: flex;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
     }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      padding: 1.2rem 0;
+    }
+
+    nav a {
+      color: #d5d5d5;
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.3s, border-bottom 0.3s, text-shadow 0.3s;
+    }
+
+    nav a:hover {
+      color: #00a8ff;
+      border-bottom: 2px solid #00a8ff;
+    }
+
+    nav a.active {
+      color: #00a8ff;
+      border-bottom: 2px solid #00a8ff;
+      text-shadow: 0 0 8px rgba(0,168,255,0.6);
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 6rem;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .card {
-      background: white;
-      padding: 2.5rem 2rem;
+      background: rgba(28, 29, 31, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 3rem 2rem;
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       text-align: center;
-      max-width: 420px;
+      box-shadow: 0 10px 40px rgba(0, 168, 255, 0.15);
+      border: 1px solid rgba(0, 168, 255, 0.2);
+      max-width: 550px;
       width: 90%;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 3rem;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
+
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      box-shadow: 0 12px 45px rgba(0, 168, 255, 0.3);
     }
+
     h1 {
       margin: 0;
-      font-size: 1.9rem;
-      letter-spacing: 0.5px;
+      font-size: 2.2rem;
+      color: #f6f7f8;
     }
+
     h2 {
-      color: #555;
-      font-size: 1.05rem;
-      font-weight: normal;
+      color: #b0b0b0;
+      font-size: 1.1rem;
       margin-top: 0.4rem;
+      font-weight: normal;
     }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: #00a8ff;
+      margin: 1.5rem auto;
+      border-radius: 3px;
+    }
+
     .tagline {
-      margin-top: 1.5rem;
-      color: #444;
+      color: #d0d0d0;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .highlight {
+      color: #00a8ff;
+    }
+
+    .contact-info {
+      color: #e0e0e0;
       font-size: 1rem;
       line-height: 1.6;
+      margin-top: 1rem;
     }
-    .contact {
-      margin-top: 2rem;
-      font-size: 1rem;
-      color: #333;
+
+    .email-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
-    .contact strong {
+
+    .email-text {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    button.copy-btn {
+      background-color: #00a8ff;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button.copy-btn:hover {
+      background-color: #008de0;
+      transform: scale(1.05);
+    }
+
+    .copied {
+      color: #00a8ff;
+      font-size: 0.85rem;
+      display: none;
+      margin-top: 5px;
+    }
+
+    .show {
       display: block;
-      margin-top: 0.3rem;
-      font-size: 1.05rem;
     }
-    a {
-      color: #0078ff;
-      font-weight: 500;
-      text-decoration: none;
+
+    .section {
+      text-align: center;
+      padding: 4.5rem 1rem;
+      width: 100%;
+      max-width: 900px;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .content-box {
+      background: rgba(28, 29, 31, 0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 0 25px rgba(0,168,255,0.12);
+      border: 1px solid rgba(0,168,255,0.15);
+      margin: 1.8rem auto;
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .content-box:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,168,255,0.35);
+      box-shadow: 0 0 50px rgba(0,168,255,0.25);
+    }
+
+    .content-box h3 {
+      color: #ffffff;
+      font-size: 1.6rem;
+      border-bottom: 2px solid #00a8ff;
+      display: inline-block;
+      padding-bottom: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .content-description {
+      color: #cbcbcb;
+      font-size: 0.97rem;
+      max-width: 700px;
+      margin: 0.5rem auto 1.5rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem auto 0;
+      color: #d1d1d1;
+      line-height: 1.8;
+      max-width: 550px;
+    }
+
+    ul li {
+      margin: 0.4rem 0;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #00a8ff;
+    }
+
+    .bottom-card {
+      background: rgba(28, 29, 31, 0.8);
+      backdrop-filter: blur(10px);
+      width: 90%;
+      max-width: 500px;
+      margin: 4rem auto 2rem;
+      padding: 1.5rem;
+      border-radius: 14px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #d5d5d5;
+      border: 1px solid rgba(0,168,255,0.2);
+      box-shadow: 0 0 25px rgba(0,168,255,0.12);
+    }
+
+    footer {
+      text-align: center;
+      color: #808080;
+      margin-top: 2rem;
+      padding-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        gap: 1.3rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+      }
+      .card {
+        padding: 2.5rem 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>R. Soliman</h1>
-    <h2>Licensed Realtor | Samson Properties</h2>
+  <div class="background"></div>
+  <div class="light"></div>
+  <div class="light"></div>
+  <div class="light"></div>
 
-    <div class="tagline">
-      Helping clients across Northern Virginia with<br>
-      Residential Buying, Selling & Renting<br>
-      as well as Commercial Properties and Investments.
+  <header>
+    <nav>
+      <a href="#residential" class="nav-link">Residential</a>
+      <a href="#commercial" class="nav-link">Commercial</a>
+      <a href="#fixflips" class="nav-link">Fix & Flips</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="card fade-in">
+      <h1>Rumzy Soliman</h1>
+      <h2>Licensed Realtor | Samson Properties</h2>
+      <div class="divider"></div>
+      <div class="tagline">
+        Providing trusted real estate solutions across <span class="highlight">Virginia</span> for buyers, sellers, and investors.
+        Specialized guidance tailored for every step of your property journey.
+      </div>
+      <div class="contact-info">
+        Phone: 571&nbsp;999&nbsp;4356<br>
+        <div class="email-section">
+          <span class="email-text" id="emailText">soliman@solimanre.com</span>
+          <button class="copy-btn" onclick="copyEmail()">Copy</button>
+        </div>
+        <div id="copiedMsg" class="copied">Copied!</div>
+        <div style="margin-top: 1rem; color: #a0a0a0; font-size: 0.9rem;">
+          License No: ____ | MLS ID: ____
+        </div>
+      </div>
     </div>
 
-    <div class="contact">
-      📍 Northern Virginia<br>
-      📞 <strong>571&nbsp;999&nbsp;4356</strong>
-      📧 <strong><a href="mailto:soliman@solimanre.com">soliman@solimanre.com</a></strong>
+    <section id="residential" class="section fade-in">
+      <div class="content-box">
+        <h3>Residential</h3>
+        <div class="content-description">
+          Whether you’re seeking your first home or selling an investment property, my residential services focus on clarity, negotiation expertise, and a smooth closing process designed for homeowners and tenants alike.
+        </div>
+        <ul>
+          <li>Home Sales and Listing Representation</li>
+          <li>Buyer Support and Market Comparisons</li>
+          <li>Multi-family and Condo Rentals</li>
+          <li>Home Staging and Marketing Consultation</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="commercial" class="section fade-in">
+      <div class="content-box">
+        <h3>Commercial</h3>
+        <div class="content-description">
+          I assist in identifying properties aligned with business goals, handling commercial sales and leases with attention to location value, growth, and investment performance.
+        </div>
+        <ul>
+          <li>Retail, Office, and Warehouse Transactions</li>
+          <li>Tenant and Landlord Representation</li>
+          <li>Long-term Lease Structuring</li>
+          <li>Investment Property Acquisition & Sales</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="fixflips" class="section fade-in">
+      <div class="content-box">
+        <h3>Fix & Flips</h3>
+        <div class="content-description">
+          From sourcing undervalued homes to managing remodels and resales, my fix & flip services help investors maximize returns while mitigating renovation and market risks.
+        </div>
+        <ul>
+          <li>Property Identification & Price Analysis</li>
+          <li>Contractor Coordination & Timeline Oversight</li>
+          <li>Rehabilitation Budgeting & ROI Tracking</li>
+          <li>Post-Flip Marketing & Listing Strategy</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="bottom-card fade-in">
+      Samson Properties<br>
+      Office: 14526 Lee Rd, Chantilly, VA 20151<br>
+      Office Number: (703) 378-8810<br>
+      Serving Northern Virginia & Beyond
     </div>
   </div>
+
+  <footer>
+    © 2025 Rumzy Soliman. All Rights Reserved.
+  </footer>
+
+  <script>
+    function copyEmail() {
+      const emailText = document.getElementById('emailText').textContent;
+      navigator.clipboard.writeText(emailText).then(() => {
+        const msg = document.getElementById('copiedMsg');
+        msg.classList.add('show');
+        setTimeout(() => msg.classList.remove('show'), 2000);
+      });
+    }
+
+    const fadeElements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.15 });
+
+    fadeElements.forEach(el => observer.observe(el));
+
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (scrollY >= sectionTop) current = section.getAttribute("id");
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) link.classList.add("active");
+      });
+    });
+  </script>
 </body>
 </html>
