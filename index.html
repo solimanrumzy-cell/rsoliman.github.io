@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rumzy Soliman | Virginia Realtor</title>
   <style>
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #e0e0e0;
@@ -15,7 +16,6 @@
       background: radial-gradient(circle at top left, #202225, #18191b, #111113);
       overflow-x: hidden;
     }
-
     .background {
       position: fixed;
       top: 0;
@@ -27,12 +27,10 @@
       z-index: -2;
       opacity: 0.6;
     }
-
     @keyframes rotateBackground {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-
     .light {
       position: fixed;
       width: 300px;
@@ -43,16 +41,13 @@
       animation: floatLight 18s ease-in-out infinite alternate;
       z-index: -1;
     }
-
     .light:nth-child(1) { top: 10%; left: 15%; }
     .light:nth-child(2) { top: 55%; right: 15%; animation-delay: 6s; }
     .light:nth-child(3) { bottom: 10%; left: 45%; animation-delay: 12s; }
-
     @keyframes floatLight {
       from { transform: translateY(0px) translateX(0px); opacity: 0.4; }
       to { transform: translateY(25px) translateX(40px); opacity: 0.7; }
     }
-
     header {
       width: 100%;
       background: rgba(25, 26, 28, 0.85);
@@ -63,14 +58,13 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
       display: flex;
       justify-content: center;
+      position: relative;
     }
-
     nav {
       display: flex;
       gap: 2rem;
       padding: 1.2rem 0;
     }
-
     nav a {
       color: #d5d5d5;
       text-decoration: none;
@@ -78,37 +72,49 @@
       letter-spacing: 0.5px;
       border-bottom: 2px solid transparent;
       transition: color 0.3s, border-bottom 0.3s, text-shadow 0.3s;
+      cursor: pointer;
     }
-
-    nav a:hover {
-      color: #00a8ff;
-      border-bottom: 2px solid #00a8ff;
-    }
-
-    nav a.active {
+    nav a:hover, nav a.active {
       color: #00a8ff;
       border-bottom: 2px solid #00a8ff;
       text-shadow: 0 0 8px rgba(0,168,255,0.6);
     }
-
+    .contact-btn {
+      position: absolute;
+      right: 2rem;
+      top: 1.1rem;
+      background: #00a8ff;
+      color: #fff;
+      border: none;
+      padding: 0.65rem 1.3rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,168,255,0.20);
+      transition: background 0.2s, color 0.2s, transform 0.18s;
+      z-index: 20;
+    }
+    .contact-btn:hover {
+      background: #008de0;
+      color: #ddf3ff;
+      transform: translateY(-2px) scale(1.035);
+    }
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding-top: 6rem;
     }
-
     .fade-in {
       opacity: 0;
       transform: translateY(35px);
       transition: opacity 1s ease, transform 1s ease;
     }
-
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     .card {
       background: rgba(28, 29, 31, 0.8);
       backdrop-filter: blur(10px);
@@ -122,25 +128,21 @@
       margin-bottom: 3rem;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
-
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 45px rgba(0, 168, 255, 0.3);
     }
-
     h1 {
       margin: 0;
       font-size: 2.2rem;
       color: #f6f7f8;
     }
-
     h2 {
       color: #b0b0b0;
       font-size: 1.1rem;
       margin-top: 0.4rem;
       font-weight: normal;
     }
-
     .divider {
       width: 60px;
       height: 3px;
@@ -148,72 +150,39 @@
       margin: 1.5rem auto;
       border-radius: 3px;
     }
-
-    .tagline {
-      color: #d0d0d0;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
     .highlight {
       color: #00a8ff;
+      font-weight: bold;
     }
-
-    .contact-info {
-      color: #e0e0e0;
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-top: 1rem;
-    }
-
-    .email-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .email-text {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    button.copy-btn {
-      background-color: #00a8ff;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    button.copy-btn:hover {
-      background-color: #008de0;
-      transform: scale(1.05);
-    }
-
-    .copied {
-      color: #00a8ff;
-      font-size: 0.85rem;
-      display: none;
-      margin-top: 5px;
-    }
-
-    .show {
-      display: block;
-    }
-
     .section {
       text-align: center;
       padding: 4.5rem 1rem;
       width: 100%;
       max-width: 900px;
     }
-
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      gap: 1.5rem;
+    }
+    .tab {
+      background: none;
+      border: none;
+      color: #d5d5d5;
+      font-size: 1.1rem;
+      padding: 0.8rem 1.5rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.3s, border-bottom 0.3s;
+      outline: none;
+    }
+    .tab.active {
+      color: #00a8ff;
+      border-bottom: 2px solid #00a8ff;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(0,168,255,0.5);
+    }
     .content-box {
       background: rgba(28, 29, 31, 0.75);
       backdrop-filter: blur(10px);
@@ -223,53 +192,42 @@
       border: 1px solid rgba(0,168,255,0.15);
       margin: 1.8rem auto;
       transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+      text-align: left;
+      max-width: 700px;
+      width: 100%;
+      display: none;
     }
-
-    .content-box:hover {
-      transform: translateY(-6px);
-      border-color: rgba(0,168,255,0.35);
-      box-shadow: 0 0 50px rgba(0,168,255,0.25);
-    }
-
+    .content-box.active { display: block; }
     .content-box h3 {
       color: #ffffff;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       border-bottom: 2px solid #00a8ff;
       display: inline-block;
       padding-bottom: 6px;
       margin-bottom: 1rem;
     }
-
     .content-description {
       color: #cbcbcb;
-      font-size: 0.97rem;
-      max-width: 700px;
-      margin: 0.5rem auto 1.5rem;
+      font-size: 1.01rem;
+      margin-bottom: 1.2rem;
       line-height: 1.6;
     }
-
     ul {
+      color: #d1d1d1;
       list-style: none;
       padding: 0;
-      margin: 1.5rem auto 0;
-      color: #d1d1d1;
-      line-height: 1.8;
-      max-width: 550px;
     }
-
     ul li {
       margin: 0.4rem 0;
       position: relative;
       padding-left: 1rem;
     }
-
     ul li::before {
       content: "•";
       position: absolute;
       left: 0;
       color: #00a8ff;
     }
-
     .bottom-card {
       background: rgba(28, 29, 31, 0.8);
       backdrop-filter: blur(10px);
@@ -284,7 +242,30 @@
       border: 1px solid rgba(0,168,255,0.2);
       box-shadow: 0 0 25px rgba(0,168,255,0.12);
     }
-
+    .bottom-card .contact-details { margin: 1rem 0 0.8rem 0; }
+    .bottom-card .highlight { font-weight: bold; }
+    button.copy-btn {
+      background-color: #00a8ff;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-left: 6px;
+    }
+    button.copy-btn:hover {
+      background-color: #008de0;
+      transform: scale(1.05);
+    }
+    .copied {
+      color: #00a8ff;
+      font-size: 0.85rem;
+      display: none;
+      margin-top: 5px;
+    }
+    .show { display: block; }
     footer {
       text-align: center;
       color: #808080;
@@ -292,7 +273,6 @@
       padding-bottom: 2rem;
       font-size: 0.9rem;
     }
-
     @media (max-width: 600px) {
       nav {
         gap: 1.3rem;
@@ -303,10 +283,18 @@
       .card {
         padding: 2.5rem 1.5rem;
       }
+      .content-box {
+        padding: 1.5rem 1rem;
+      }
+      .contact-btn {
+        right: 1rem;
+        padding: 0.5rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
+  <div id="top"></div>
   <div class="background"></div>
   <div class="light"></div>
   <div class="light"></div>
@@ -314,10 +302,10 @@
 
   <header>
     <nav>
-      <a href="#residential" class="nav-link">Residential</a>
-      <a href="#commercial" class="nav-link">Commercial</a>
-      <a href="#fixflips" class="nav-link">Fix & Flips</a>
+      <a href="#whoweserve" class="nav-link active">Who I Serve</a>
+      <a href="#whatioffer" class="nav-link">What I Offer</a>
     </nav>
+    <button class="contact-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Contact</button>
   </header>
 
   <div class="container">
@@ -327,70 +315,76 @@
       <div class="divider"></div>
       <div class="tagline">
         Providing trusted real estate solutions across <span class="highlight">Virginia</span> for buyers, sellers, and investors.
-        Specialized guidance tailored for every step of your property journey.
-      </div>
-      <div class="contact-info">
-        Phone: 571&nbsp;999&nbsp;4356<br>
-        <div class="email-section">
-          <span class="email-text" id="emailText">soliman@solimanre.com</span>
-          <button class="copy-btn" onclick="copyEmail()">Copy</button>
-        </div>
-        <div id="copiedMsg" class="copied">Copied!</div>
-        <div style="margin-top: 1rem; color: #a0a0a0; font-size: 0.9rem;">
-          License No: ____ | MLS ID: ____
-        </div>
       </div>
     </div>
 
-    <section id="residential" class="section fade-in">
-      <div class="content-box">
+    <section id="whoweserve" class="section fade-in">
+      <div class="tabs">
+        <button class="tab active" onclick="showBox(0)">Residential</button>
+        <button class="tab" onclick="showBox(1)">Commercial</button>
+        <button class="tab" onclick="showBox(2)">Private Investor Deals</button>
+      </div>
+      <div class="content-box active" id="box0">
         <h3>Residential</h3>
         <div class="content-description">
-          Whether you’re seeking your first home or selling an investment property, my residential services focus on clarity, negotiation expertise, and a smooth closing process designed for homeowners and tenants alike.
+          [Brief description of services for residential clients. Edit this as you wish!]
         </div>
         <ul>
-          <li>Home Sales and Listing Representation</li>
-          <li>Buyer Support and Market Comparisons</li>
-          <li>Multi-family and Condo Rentals</li>
-          <li>Home Staging and Marketing Consultation</li>
+          <li>Home buying and selling expertise</li>
+          <li>Market analysis and pricing strategy</li>
+          <li>First-time buyer consultation</li>
+          <li>Negotiation & seamless closing</li>
         </ul>
       </div>
-    </section>
-
-    <section id="commercial" class="section fade-in">
-      <div class="content-box">
+      <div class="content-box" id="box1">
         <h3>Commercial</h3>
         <div class="content-description">
-          I assist in identifying properties aligned with business goals, handling commercial sales and leases with attention to location value, growth, and investment performance.
+          [Brief description of commercial property services. Edit this as you wish!]
         </div>
         <ul>
-          <li>Retail, Office, and Warehouse Transactions</li>
-          <li>Tenant and Landlord Representation</li>
-          <li>Long-term Lease Structuring</li>
-          <li>Investment Property Acquisition & Sales</li>
+          <li>Retail, office, and industrial deals</li>
+          <li>Tenant & landlord representation</li>
+          <li>Location assessment and investment strategy</li>
+          <li>Long-term lease structuring & market analysis</li>
         </ul>
       </div>
-    </section>
-
-    <section id="fixflips" class="section fade-in">
-      <div class="content-box">
-        <h3>Fix & Flips</h3>
+      <div class="content-box" id="box2">
+        <h3>Private Investor Deals</h3>
         <div class="content-description">
-          From sourcing undervalued homes to managing remodels and resales, my fix & flip services help investors maximize returns while mitigating renovation and market risks.
+          [Brief description for investors—fix & flips, rental portfolios, etc. Edit this as you wish!]
         </div>
         <ul>
-          <li>Property Identification & Price Analysis</li>
-          <li>Contractor Coordination & Timeline Oversight</li>
-          <li>Rehabilitation Budgeting & ROI Tracking</li>
-          <li>Post-Flip Marketing & Listing Strategy</li>
+          <li>Property identification & analysis</li>
+          <li>Renovation oversight & contractor referrals</li>
+          <li>ROI tracking and market timing</li>
+          <li>Off-market deal sourcing</li>
         </ul>
       </div>
     </section>
 
-    <div class="bottom-card fade-in">
+    <section id="whatioffer" class="section fade-in" style="display:none;">
+      <div class="content-box active">
+        <h3>What I Offer</h3>
+        <div class="content-description">
+          [Put your “What I Offer” description and points here.]
+        </div>
+        <ul>
+          <li>[Custom service or feature]</li>
+          <li>[Another offering]</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="bottom-card fade-in" id="contact-info">
       Samson Properties<br>
-      Office: 14526 Lee Rd, Chantilly, VA 20151<br>
-      Office Number: (703) 378-8810<br>
+      <div class="contact-details">
+        Office: <span class="highlight">4500 Pond Way, STE 100, Woodbridge, VA 22192</span><br>
+        Office Number: (703) 378-8810<br>
+        Phone: <span class="highlight">+1 (571) 999-4356</span><br>
+        Email: <span class="highlight" id="emailText">soliman@solimanre.com</span>
+        <button class="copy-btn" onclick="copyEmail()">Copy</button>
+        <div id="copiedMsg" class="copied">Copied!</div>
+      </div>
       Serving Northern Virginia & Beyond
     </div>
   </div>
@@ -398,7 +392,6 @@
   <footer>
     © 2025 Rumzy Soliman. All Rights Reserved.
   </footer>
-
   <script>
     function copyEmail() {
       const emailText = document.getElementById('emailText').textContent;
@@ -408,28 +401,36 @@
         setTimeout(() => msg.classList.remove('show'), 2000);
       });
     }
-
     const fadeElements = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add("visible");
       });
     }, { threshold: 0.15 });
-
     fadeElements.forEach(el => observer.observe(el));
-
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        if (scrollY >= sectionTop) current = section.getAttribute("id");
+    // Tab logic for content boxes
+    function showBox(idx) {
+      document.querySelectorAll('.tab').forEach((tab, i) => {
+        tab.classList.toggle('active', i === idx);
       });
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href").includes(current)) link.classList.add("active");
+      document.querySelectorAll('.content-box').forEach((box, i) => {
+        box.classList.toggle('active', i === idx);
+      });
+    }
+    // Nav tab logic (Who I Serve / What I Offer)
+    document.querySelectorAll('nav a').forEach(function(link){
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+        this.classList.add('active');
+        if(this.getAttribute('href')==='#whatioffer'){
+          document.getElementById('whoweserve').style.display='none';
+          document.getElementById('whatioffer').style.display='';
+        } else {
+          document.getElementById('whoweserve').style.display='';
+          document.getElementById('whatioffer').style.display='none';
+        }
+        window.location.hash = this.getAttribute('href');
       });
     });
   </script>
