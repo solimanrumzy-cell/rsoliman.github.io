@@ -49,6 +49,30 @@
       to { transform: translateY(25px) translateX(40px); opacity: 0.7; }
     }
 
+    /* Top-right newsletter button */
+    .newsletter-top-btn {
+      position: fixed;
+      top: 1.5rem;
+      right: 2rem;
+      background: rgba(0, 168, 255, 0.15);
+      color: #00a8ff;
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.25s ease;
+      z-index: 100;
+      text-decoration: none;
+    }
+    .newsletter-top-btn:hover {
+      background: rgba(0, 168, 255, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 168, 255, 0.2);
+    }
+
     header {
       width: 100%;
       background: rgba(25, 26, 28, 0.0);
@@ -174,6 +198,9 @@
     }
 
     /* Newsletter styles */
+    .newsletter-section {
+      scroll-margin-top: 4rem;
+    }
     .newsletter-form {
       max-width: 500px;
       width: 90%;
@@ -279,6 +306,12 @@
       font-size: 0.9rem;
     }
     @media (max-width: 600px) {
+      .newsletter-top-btn {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.45rem 0.85rem;
+        font-size: 0.8rem;
+      }
       .card {
         padding: 2.5rem 1.5rem;
       }
@@ -300,6 +333,9 @@
   <div class="light"></div>
   <div class="light"></div>
   <div class="light"></div>
+
+  <!-- Top-right Newsletter button -->
+  <a href="#newsletter" class="newsletter-top-btn">Newsletter</a>
 
   <header></header>
 
@@ -348,32 +384,35 @@
       </div>
     </section>
 
-    <!-- Minimal Newsletter Signup (Formspree) -->
-    <form
-      action="https://formspree.io/f/xqeznaae"
-      method="POST"
-      class="newsletter-form"
-    >
-      <label class="newsletter-label" for="newsletter-email">
-        Stay updated (optional):
-      </label>
-      <div class="newsletter-row">
-        <input
-          id="newsletter-email"
-          type="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-          class="newsletter-input"
-        >
-        <button type="submit" class="newsletter-button">
-          Subscribe
-        </button>
-      </div>
-      <small class="newsletter-note">
-        Occasional updates only. You can unsubscribe at any time.
-      </small>
-    </form>
+    <!-- Newsletter section with ID for smooth scroll -->
+    <section id="newsletter" class="newsletter-section fade-in">
+      <!-- Minimal Newsletter Signup (Formspree) -->
+      <form
+        action="https://formspree.io/f/xqeznaae"
+        method="POST"
+        class="newsletter-form"
+      >
+        <label class="newsletter-label" for="newsletter-email">
+          Stay updated (optional):
+        </label>
+        <div class="newsletter-row">
+          <input
+            id="newsletter-email"
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+            class="newsletter-input"
+          >
+          <button type="submit" class="newsletter-button">
+            Subscribe
+          </button>
+        </div>
+        <small class="newsletter-note">
+          Occasional updates only. You can unsubscribe at any time.
+        </small>
+      </form>
+    </section>
 
     <div class="bottom-card fade-in" id="contact-info">
       Keller Williams<br>
