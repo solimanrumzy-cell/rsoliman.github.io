@@ -172,12 +172,65 @@
       left: 0;
       color: #00a8ff;
     }
+
+    /* Newsletter styles */
+    .newsletter-form {
+      max-width: 500px;
+      width: 90%;
+      margin: 2rem auto 0 auto;
+      text-align: left;
+    }
+    .newsletter-label {
+      display: block;
+      font-size: 0.9rem;
+      color: #c2c2c2;
+      margin-bottom: 0.4rem;
+    }
+    .newsletter-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .newsletter-input {
+      flex: 1;
+      padding: 0.6rem 0.75rem;
+      border-radius: 10px;
+      border: 1px solid #3a3b3e;
+      background: #141518;
+      color: #f1f1f1;
+      font-size: 0.9rem;
+    }
+    .newsletter-input::placeholder {
+      color: #777;
+    }
+    .newsletter-button {
+      padding: 0.55rem 1.1rem;
+      border-radius: 10px;
+      border: none;
+      background: #00a8ff;
+      color: #ffffff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.18s ease;
+      white-space: nowrap;
+    }
+    .newsletter-button:hover {
+      background: #008de0;
+      transform: translateY(-1px);
+    }
+    .newsletter-note {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+      color: #9a9a9a;
+    }
+
     .bottom-card {
       background: rgba(28, 29, 31, 0.8);
       backdrop-filter: blur(10px);
       width: 90%;
       max-width: 500px;
-      margin: 4rem auto 2rem;
+      margin: 3rem auto 2rem;
       padding: 1.5rem;
       border-radius: 14px;
       text-align: center;
@@ -189,7 +242,6 @@
     .bottom-card .contact-details { margin: 1rem 0 0.8rem 0; }
     .bottom-card .highlight { font-weight: bold; }
 
-    /* License line styling: lighter grey, smaller font */
     .license-line {
       display: block;
       margin-top: 0.35rem;
@@ -232,6 +284,13 @@
       }
       .content-box {
         padding: 1.5rem 1rem;
+      }
+      .newsletter-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .newsletter-button {
+        width: 100%;
       }
     }
   </style>
@@ -289,16 +348,43 @@
       </div>
     </section>
 
+    <!-- Minimal Newsletter Signup (Formspree) -->
+    <form
+      action="https://formspree.io/f/xqeznaae"
+      method="POST"
+      class="newsletter-form"
+    >
+      <label class="newsletter-label" for="newsletter-email">
+        Stay updated (optional):
+      </label>
+      <div class="newsletter-row">
+        <input
+          id="newsletter-email"
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+          class="newsletter-input"
+        >
+        <button type="submit" class="newsletter-button">
+          Subscribe
+        </button>
+      </div>
+      <small class="newsletter-note">
+        Occasional updates only. You can unsubscribe at any time.
+      </small>
+    </form>
+
     <div class="bottom-card fade-in" id="contact-info">
       Keller Williams<br>
       <div class="contact-details">
-        Office: <span class="highlight">4310 Prince William Pkwy, #200, Woodbridge, VA, 22192</span><br>
+        Office: <span class="highlight">4310 Prince William Pkwy, #200, Woodbridge, VA 22192</span><br>
         Office Number: (703) 378-8810<br>
         Phone: <span class="highlight">+1 (571) 999-4356</span><br>
         Email: <span class="highlight" id="emailText">soliman@solimanre.com</span>
         <button class="copy-btn" onclick="copyEmail()">Copy</button>
         <span class="license-line">VA Real Estate License #0225267265</span>
-        <span class="license-line">Branch Office License #0225267265</san>
+        <span class="license-line">Branch Office License #1234567890</span>
         <div id="copiedMsg" class="copied">Copied!</div>
       </div>
       Serving Virginia clients across residential, investment, and portfolio needs.
