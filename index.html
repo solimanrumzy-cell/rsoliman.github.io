@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rumzy Soliman | Virginia Realtor</title>
+  <title>Rumzy Soliman | Real Estate Consultant</title>
   <style>
     html { scroll-behavior: smooth; }
     body {
@@ -48,63 +48,23 @@
       from { transform: translateY(0px) translateX(0px); opacity: 0.4; }
       to { transform: translateY(25px) translateX(40px); opacity: 0.7; }
     }
+
     header {
       width: 100%;
-      background: rgba(25, 26, 28, 0.85);
+      background: rgba(25, 26, 28, 0.0);
       position: sticky;
       top: 0;
       z-index: 10;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
-      display: flex;
-      justify-content: center;
-      position: relative;
+      backdrop-filter: none;
+      box-shadow: none;
+      height: 0;
     }
-    nav {
-      display: flex;
-      gap: 2rem;
-      padding: 1.2rem 0;
-    }
-    nav a {
-      color: #d5d5d5;
-      text-decoration: none;
-      font-size: 1rem;
-      letter-spacing: 0.5px;
-      border-bottom: 2px solid transparent;
-      transition: color 0.3s, border-bottom 0.3s, text-shadow 0.3s;
-      cursor: pointer;
-    }
-    nav a:hover, nav a.active {
-      color: #00a8ff;
-      border-bottom: 2px solid #00a8ff;
-      text-shadow: 0 0 8px rgba(0,168,255,0.6);
-    }
-    .contact-btn {
-      position: absolute;
-      right: 2rem;
-      top: 1.1rem;
-      background: #00a8ff;
-      color: #fff;
-      border: none;
-      padding: 0.65rem 1.3rem;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,168,255,0.20);
-      transition: background 0.2s, color 0.2s, transform 0.18s;
-      z-index: 20;
-    }
-    .contact-btn:hover {
-      background: #008de0;
-      color: #ddf3ff;
-      transform: translateY(-2px) scale(1.035);
-    }
+
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 6rem;
+      padding-top: 4rem;
     }
     .fade-in {
       opacity: 0;
@@ -132,12 +92,12 @@
       transform: translateY(-5px);
       box-shadow: 0 12px 45px rgba(0, 168, 255, 0.3);
     }
-    h1 {
+    .card h2 {
       margin: 0;
       font-size: 2.2rem;
       color: #f6f7f8;
     }
-    h2 {
+    .card h3 {
       color: #b0b0b0;
       font-size: 1.1rem;
       margin-top: 0.4rem;
@@ -154,34 +114,18 @@
       color: #00a8ff;
       font-weight: bold;
     }
+    .tagline {
+      font-size: 1.02rem;
+      color: #d6d6d6;
+      line-height: 1.5;
+      max-width: 420px;
+      margin: 0 auto;
+    }
     .section {
       text-align: center;
       padding: 4.5rem 1rem;
       width: 100%;
       max-width: 900px;
-    }
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-      gap: 1.5rem;
-    }
-    .tab {
-      background: none;
-      border: none;
-      color: #d5d5d5;
-      font-size: 1.1rem;
-      padding: 0.8rem 1.5rem;
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: color 0.3s, border-bottom 0.3s;
-      outline: none;
-    }
-    .tab.active {
-      color: #00a8ff;
-      border-bottom: 2px solid #00a8ff;
-      font-weight: bold;
-      text-shadow: 0 0 8px rgba(0,168,255,0.5);
     }
     .content-box {
       background: rgba(28, 29, 31, 0.75);
@@ -195,10 +139,8 @@
       text-align: left;
       max-width: 700px;
       width: 100%;
-      display: none;
     }
-    .content-box.active { display: block; }
-    .content-box h3 {
+    .content-box h4 {
       color: #ffffff;
       font-size: 1.4rem;
       border-bottom: 2px solid #00a8ff;
@@ -209,18 +151,20 @@
     .content-description {
       color: #cbcbcb;
       font-size: 1.01rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.4rem;
       line-height: 1.6;
     }
     ul {
       color: #d1d1d1;
       list-style: none;
       padding: 0;
+      margin: 0;
     }
     ul li {
       margin: 0.4rem 0;
       position: relative;
       padding-left: 1rem;
+      font-size: 0.98rem;
     }
     ul li::before {
       content: "•";
@@ -244,6 +188,15 @@
     }
     .bottom-card .contact-details { margin: 1rem 0 0.8rem 0; }
     .bottom-card .highlight { font-weight: bold; }
+
+    /* License line styling: lighter grey, smaller font */
+    .license-line {
+      display: block;
+      margin-top: 0.35rem;
+      font-size: 0.78rem;
+      color: #a0a0a0;
+    }
+
     button.copy-btn {
       background-color: #00a8ff;
       color: white;
@@ -274,133 +227,100 @@
       font-size: 0.9rem;
     }
     @media (max-width: 600px) {
-      nav {
-        gap: 1.3rem;
-      }
-      nav a {
-        font-size: 0.9rem;
-      }
       .card {
         padding: 2.5rem 1.5rem;
       }
       .content-box {
         padding: 1.5rem 1rem;
       }
-      .contact-btn {
-        right: 1rem;
-        padding: 0.5rem 1rem;
-      }
     }
   </style>
 </head>
 <body>
-  <div id="top"></div>
   <div class="background"></div>
   <div class="light"></div>
   <div class="light"></div>
   <div class="light"></div>
 
-  <header>
-    <nav>
-      <a href="#whoweserve" class="nav-link active">Who I Serve</a>
-      <a href="#whatioffer" class="nav-link">What I Offer</a>
-    </nav>
-    <button class="contact-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Contact</button>
-  </header>
+  <header></header>
 
   <div class="container">
     <div class="card fade-in">
-      <h1>Rumzy Soliman</h1>
-      <h2>Licensed Realtor | Samson Properties</h2>
+      <h2>Rumzy Soliman</h2>
+      <h3>Licensed Real Estate Consultant | Keller Williams</h3>
       <div class="divider"></div>
       <div class="tagline">
-        Providing trusted real estate solutions across <span class="highlight">Virginia</span> for buyers, sellers, and investors.
+        Guiding clients through buying, selling, and investing in <span class="highlight">Virginia</span> real estate with clarity and confidence.
       </div>
     </div>
 
-    <section id="whoweserve" class="section fade-in">
-      <div class="tabs">
-        <button class="tab active" onclick="showBox(0)">Residential</button>
-        <button class="tab" onclick="showBox(1)">Commercial</button>
-        <button class="tab" onclick="showBox(2)">Private Investor Deals</button>
-      </div>
-      <div class="content-box active" id="box0">
-        <h3>Residential</h3>
+    <section class="section fade-in">
+      <div class="content-box">
+        <h4>Who I Am</h4>
         <div class="content-description">
-          [Brief description of services for residential clients. Edit this as you wish!]
+          As a full‑service real estate consultant, the focus is on honest guidance and calm, clear communication at every step.  
+          From first‑time buyers to seasoned investors, each client receives straightforward advice built on local market knowledge and careful analysis.
         </div>
-        <ul>
-          <li>Home buying and selling expertise</li>
-          <li>Market analysis and pricing strategy</li>
-          <li>First-time buyer consultation</li>
-          <li>Negotiation & seamless closing</li>
-        </ul>
       </div>
-      <div class="content-box" id="box1">
-        <h3>Commercial</h3>
-        <div class="content-description">
-          [Brief description of commercial property services. Edit this as you wish!]
-        </div>
-        <ul>
-          <li>Retail, office, and industrial deals</li>
-          <li>Tenant & landlord representation</li>
-          <li>Location assessment and investment strategy</li>
-          <li>Long-term lease structuring & market analysis</li>
-        </ul>
-      </div>
-      <div class="content-box" id="box2">
-        <h3>Private Investor Deals</h3>
-        <div class="content-description">
-          [Brief description for investors—fix & flips, rental portfolios, etc. Edit this as you wish!]
-        </div>
-        <ul>
-          <li>Property identification & analysis</li>
-          <li>Renovation oversight & contractor referrals</li>
-          <li>ROI tracking and market timing</li>
-          <li>Off-market deal sourcing</li>
-        </ul>
-      </div>
-    </section>
 
-    <section id="whatioffer" class="section fade-in" style="display:none;">
-      <div class="content-box active">
-        <h3>What I Offer</h3>
+      <div class="content-box">
+        <h4>How I Help</h4>
         <div class="content-description">
-          [Put your “What I Offer” description and points here.]
+          Rather than separating services by property type, the goal is to handle the entire picture: your goals, your timeline, and your long‑term plan for real estate.
         </div>
         <ul>
-          <li>[Custom service or feature]</li>
-          <li>[Another offering]</li>
+          <li>End‑to‑end guidance for buying, selling, and investing in Virginia</li>
+          <li>Market insight, pricing strategy, and positioning for any property</li>
+          <li>Coordination with lenders, inspectors, contractors, and settlement teams</li>
+          <li>Negotiation focused on protecting your interests and maximizing value</li>
+        </ul>
+      </div>
+
+      <div class="content-box">
+        <h4>Who I Work With</h4>
+        <div class="content-description">
+          The aim is to be your first call for any real estate decision, whether it is personal, investment‑focused, or part of a broader portfolio.
+        </div>
+        <ul>
+          <li>Homebuyers and sellers seeking a clear, guided process</li>
+          <li>Investors building or refining rental and long‑term portfolios</li>
+          <li>Owners evaluating when and how to reposition existing properties</li>
         </ul>
       </div>
     </section>
 
     <div class="bottom-card fade-in" id="contact-info">
-      Samson Properties<br>
+      Keller Williams<br>
       <div class="contact-details">
-        Office: <span class="highlight">4500 Pond Way, STE 100, Woodbridge, VA 22192</span><br>
+        Office: <span class="highlight">4310 Prince William Pkwy, #200, Woodbridge, VA, 22192</span><br>
         Office Number: (703) 378-8810<br>
         Phone: <span class="highlight">+1 (571) 999-4356</span><br>
         Email: <span class="highlight" id="emailText">soliman@solimanre.com</span>
         <button class="copy-btn" onclick="copyEmail()">Copy</button>
+        <span class="license-line">VA Real Estate License #0225267265</span>
+        <span class="license-line">Branch Office License #0225267265</san>
         <div id="copiedMsg" class="copied">Copied!</div>
       </div>
-      Serving Northern Virginia & Beyond
+      Serving Virginia clients across residential, investment, and portfolio needs.
     </div>
   </div>
 
   <footer>
     © 2025 Rumzy Soliman. All Rights Reserved.
   </footer>
+
   <script>
     function copyEmail() {
       const emailText = document.getElementById('emailText').textContent;
-      navigator.clipboard.writeText(emailText).then(() => {
-        const msg = document.getElementById('copiedMsg');
-        msg.classList.add('show');
-        setTimeout(() => msg.classList.remove('show'), 2000);
-      });
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(emailText).then(() => {
+          const msg = document.getElementById('copiedMsg');
+          msg.classList.add('show');
+          setTimeout(() => msg.classList.remove('show'), 2000);
+        });
+      }
     }
+
     const fadeElements = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -408,31 +328,6 @@
       });
     }, { threshold: 0.15 });
     fadeElements.forEach(el => observer.observe(el));
-    // Tab logic for content boxes
-    function showBox(idx) {
-      document.querySelectorAll('.tab').forEach((tab, i) => {
-        tab.classList.toggle('active', i === idx);
-      });
-      document.querySelectorAll('.content-box').forEach((box, i) => {
-        box.classList.toggle('active', i === idx);
-      });
-    }
-    // Nav tab logic (Who I Serve / What I Offer)
-    document.querySelectorAll('nav a').forEach(function(link){
-      link.addEventListener('click', function(e){
-        e.preventDefault();
-        document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
-        this.classList.add('active');
-        if(this.getAttribute('href')==='#whatioffer'){
-          document.getElementById('whoweserve').style.display='none';
-          document.getElementById('whatioffer').style.display='';
-        } else {
-          document.getElementById('whoweserve').style.display='';
-          document.getElementById('whatioffer').style.display='none';
-        }
-        window.location.hash = this.getAttribute('href');
-      });
-    });
   </script>
 </body>
 </html>
