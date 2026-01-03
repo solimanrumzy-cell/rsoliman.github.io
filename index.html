@@ -3,61 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Rumzy Soliman | Real Estate Consultant</title>
+
+  <!-- Mobile / PWA friendliness -->
+  <meta name="theme-color" content="#18191b" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, system-ui,
+        Arial, sans-serif;
       color: #e0e0e0;
       margin: 0;
       padding: 0;
-      scroll-behavior: smooth;
       position: relative;
-      background: radial-gradient(circle at top left, #202225, #18191b, #111113);
+      background: radial-gradient(
+        circle at top left,
+        #202225,
+        #18191b,
+        #111113
+      );
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+      line-height: 1.5;
     }
+
+    /* Animated background */
     .background {
       position: fixed;
       top: 0;
       left: 0;
       width: 200%;
       height: 200%;
-      background: conic-gradient(from 270deg at 50% 50%, #1e2023, #2d3035, #141518, #1b1d20, #2d3035);
+      background: conic-gradient(
+        from 270deg at 50% 50%,
+        #1e2023,
+        #2d3035,
+        #141518,
+        #1b1d20,
+        #2d3035
+      );
       animation: rotateBackground 45s linear infinite;
       z-index: -2;
       opacity: 0.6;
+      will-change: transform;
     }
+
     @keyframes rotateBackground {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
     }
+
     .light {
       position: fixed;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(0,168,255,0.15), transparent 70%);
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(
+        circle,
+        rgba(0, 168, 255, 0.15),
+        transparent 70%
+      );
       border-radius: 50%;
       filter: blur(100px);
       animation: floatLight 18s ease-in-out infinite alternate;
       z-index: -1;
+      pointer-events: none;
     }
-    .light:nth-child(1) { top: 10%; left: 15%; }
-    .light:nth-child(2) { top: 55%; right: 15%; animation-delay: 6s; }
-    .light:nth-child(3) { bottom: 10%; left: 45%; animation-delay: 12s; }
+
+    .light:nth-child(1) {
+      top: 10%;
+      left: 15%;
+    }
+
+    .light:nth-child(2) {
+      top: 55%;
+      right: 15%;
+      animation-delay: 6s;
+    }
+
+    .light:nth-child(3) {
+      bottom: 10%;
+      left: 45%;
+      animation-delay: 12s;
+    }
+
     @keyframes floatLight {
-      from { transform: translateY(0px) translateX(0px); opacity: 0.4; }
-      to { transform: translateY(25px) translateX(40px); opacity: 0.7; }
+      from {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.4;
+      }
+      to {
+        transform: translateY(25px) translateX(40px);
+        opacity: 0.7;
+      }
     }
 
     /* Top-right newsletter button */
     .newsletter-top-btn {
       position: fixed;
-      top: 1.5rem;
-      right: 2rem;
+      top: 1.25rem;
+      right: 1.5rem;
       background: rgba(0, 168, 255, 0.15);
       color: #00a8ff;
       border: 1px solid rgba(0, 168, 255, 0.3);
-      padding: 0.5rem 1rem;
+      padding: 0.55rem 1.1rem;
       border-radius: 12px;
       font-size: 0.85rem;
       font-weight: 500;
@@ -66,21 +126,24 @@
       transition: all 0.25s ease;
       z-index: 100;
       text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
     }
-    .newsletter-top-btn:hover {
+
+    .newsletter-top-btn:hover,
+    .newsletter-top-btn:active,
+    .newsletter-top-btn:focus-visible {
       background: rgba(0, 168, 255, 0.25);
       transform: translateY(-2px);
       box-shadow: 0 4px 15px rgba(0, 168, 255, 0.2);
+      outline: none;
     }
 
     header {
       width: 100%;
-      background: rgba(25, 26, 28, 0.0);
+      background: transparent;
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: none;
-      box-shadow: none;
+      z-index: 5;
       height: 0;
     }
 
@@ -88,108 +151,136 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 4rem;
+      padding-top: 4.5rem;
+      padding-bottom: 2.5rem;
+      padding-inline: 1rem;
+      max-width: 1000px;
+      margin-inline: auto;
     }
+
     .fade-in {
       opacity: 0;
       transform: translateY(35px);
-      transition: opacity 1s ease, transform 1s ease;
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
+
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
     .card {
-      background: rgba(28, 29, 31, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 3rem 2rem;
+      background: rgba(28, 29, 31, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 2.75rem 1.75rem;
       border-radius: 20px;
       text-align: center;
       box-shadow: 0 10px 40px rgba(0, 168, 255, 0.15);
       border: 1px solid rgba(0, 168, 255, 0.2);
       max-width: 550px;
-      width: 90%;
+      width: 100%;
       margin-bottom: 3rem;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
+
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
       box-shadow: 0 12px 45px rgba(0, 168, 255, 0.3);
     }
+
     .card h2 {
       margin: 0;
       font-size: 2.2rem;
       color: #f6f7f8;
+      letter-spacing: 0.02em;
     }
+
     .card h3 {
       color: #b0b0b0;
-      font-size: 1.1rem;
-      margin-top: 0.4rem;
-      font-weight: normal;
+      font-size: 1.05rem;
+      margin-top: 0.5rem;
+      font-weight: 400;
     }
+
     .divider {
       width: 60px;
       height: 3px;
       background: #00a8ff;
-      margin: 1.5rem auto;
+      margin: 1.6rem auto 1.4rem;
       border-radius: 3px;
     }
+
     .highlight {
       color: #00a8ff;
-      font-weight: bold;
+      font-weight: 600;
     }
+
     .tagline {
       font-size: 1.02rem;
       color: #d6d6d6;
-      line-height: 1.5;
-      max-width: 420px;
+      line-height: 1.55;
+      max-width: 430px;
       margin: 0 auto;
     }
+
     .section {
       text-align: center;
-      padding: 4.5rem 1rem;
+      padding: 3.75rem 0 0;
       width: 100%;
       max-width: 900px;
     }
+
     .content-box {
-      background: rgba(28, 29, 31, 0.75);
+      background: rgba(28, 29, 31, 0.78);
       backdrop-filter: blur(10px);
       border-radius: 18px;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 0 25px rgba(0,168,255,0.12);
-      border: 1px solid rgba(0,168,255,0.15);
-      margin: 1.8rem auto;
-      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+      padding: 2.25rem 1.75rem;
+      box-shadow: 0 0 25px rgba(0, 168, 255, 0.12);
+      border: 1px solid rgba(0, 168, 255, 0.15);
+      margin: 1.75rem auto;
+      transition: transform 0.35s ease, border-color 0.35s ease,
+        box-shadow 0.35s ease;
       text-align: left;
       max-width: 700px;
       width: 100%;
     }
+
+    .content-box:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 168, 255, 0.35);
+      box-shadow: 0 0 32px rgba(0, 168, 255, 0.2);
+    }
+
     .content-box h4 {
       color: #ffffff;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       border-bottom: 2px solid #00a8ff;
       display: inline-block;
       padding-bottom: 6px;
-      margin-bottom: 1rem;
+      margin: 0 0 1rem;
     }
+
     .content-description {
       color: #cbcbcb;
       font-size: 1.01rem;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.25rem;
       line-height: 1.6;
     }
+
     ul {
       color: #d1d1d1;
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     ul li {
-      margin: 0.4rem 0;
+      margin: 0.45rem 0;
       position: relative;
-      padding-left: 1rem;
+      padding-left: 1.05rem;
       font-size: 0.98rem;
     }
+
     ul li::before {
       content: "•";
       position: absolute;
@@ -199,79 +290,108 @@
 
     /* Newsletter styles */
     .newsletter-section {
-      scroll-margin-top: 4rem;
+      scroll-margin-top: 4.5rem;
+      margin-top: 3rem;
+      width: 100%;
+      max-width: 700px;
     }
+
     .newsletter-form {
       max-width: 500px;
-      width: 90%;
-      margin: 2rem auto 0 auto;
+      width: 100%;
+      margin: 2rem auto 0;
       text-align: left;
     }
+
     .newsletter-label {
       display: block;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: #c2c2c2;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.45rem;
     }
+
     .newsletter-row {
       display: flex;
       gap: 0.5rem;
       align-items: center;
     }
+
     .newsletter-input {
       flex: 1;
-      padding: 0.6rem 0.75rem;
+      padding: 0.65rem 0.75rem;
       border-radius: 10px;
       border: 1px solid #3a3b3e;
       background: #141518;
       color: #f1f1f1;
-      font-size: 0.9rem;
+      font-size: 16px; /* prevent iOS zoom */
+      outline: none;
     }
+
     .newsletter-input::placeholder {
       color: #777;
     }
+
+    .newsletter-input:focus-visible {
+      border-color: #00a8ff;
+      box-shadow: 0 0 0 1px rgba(0, 168, 255, 0.35);
+    }
+
     .newsletter-button {
-      padding: 0.55rem 1.1rem;
+      padding: 0.7rem 1.15rem;
       border-radius: 10px;
       border: none;
       background: #00a8ff;
       color: #ffffff;
-      font-size: 0.9rem;
+      font-size: 16px;
       cursor: pointer;
-      transition: background 0.2s ease, transform 0.18s ease;
+      transition: background 0.2s ease, transform 0.18s ease,
+        box-shadow 0.2s ease;
       white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+      min-width: 44px;
+      min-height: 44px;
     }
-    .newsletter-button:hover {
+
+    .newsletter-button:hover,
+    .newsletter-button:active,
+    .newsletter-button:focus-visible {
       background: #008de0;
       transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 168, 255, 0.35);
+      outline: none;
     }
+
     .newsletter-note {
       display: block;
-      margin-top: 0.4rem;
+      margin-top: 0.5rem;
       font-size: 0.78rem;
       color: #9a9a9a;
     }
 
     .bottom-card {
-      background: rgba(28, 29, 31, 0.8);
+      background: rgba(28, 29, 31, 0.85);
       backdrop-filter: blur(10px);
-      width: 90%;
+      width: 100%;
       max-width: 500px;
-      margin: 3rem auto 2rem;
-      padding: 1.5rem;
+      margin: 3.25rem auto 1.75rem;
+      padding: 1.5rem 1.25rem;
       border-radius: 14px;
       text-align: center;
       font-size: 0.95rem;
       color: #d5d5d5;
-      border: 1px solid rgba(0,168,255,0.2);
-      box-shadow: 0 0 25px rgba(0,168,255,0.12);
+      border: 1px solid rgba(0, 168, 255, 0.2);
+      box-shadow: 0 0 25px rgba(0, 168, 255, 0.12);
     }
-    .bottom-card .contact-details { margin: 1rem 0 0.8rem 0; }
-    .bottom-card .highlight { font-weight: bold; }
+
+    .bottom-card .contact-details {
+      margin: 1rem 0 0.8rem;
+      line-height: 1.6;
+      word-wrap: break-word;
+    }
 
     .license-line {
       display: block;
-      margin-top: 0.35rem;
+      margin-top: 0.4rem;
       font-size: 0.78rem;
       color: #a0a0a0;
     }
@@ -280,31 +400,47 @@
       background-color: #00a8ff;
       color: white;
       border: none;
-      padding: 6px 12px;
+      padding: 0.5rem 0.9rem;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 0.85rem;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 15px;
+      transition: background-color 0.2s ease, transform 0.18s ease,
+        box-shadow 0.2s ease;
       margin-left: 6px;
+      -webkit-tap-highlight-color: transparent;
+      min-width: 44px;
+      min-height: 44px;
     }
-    button.copy-btn:hover {
+
+    button.copy-btn:hover,
+    button.copy-btn:active,
+    button.copy-btn:focus-visible {
       background-color: #008de0;
-      transform: scale(1.05);
+      transform: scale(1.03);
+      box-shadow: 0 3px 10px rgba(0, 168, 255, 0.3);
+      outline: none;
     }
+
     .copied {
       color: #00a8ff;
       font-size: 0.85rem;
       display: none;
-      margin-top: 5px;
+      margin-top: 0.45rem;
     }
-    .show { display: block; }
+
+    .copied.show {
+      display: block;
+    }
+
     footer {
       text-align: center;
       color: #808080;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       padding-bottom: 2rem;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
+
+    /* Mobile tweaks */
     @media (max-width: 600px) {
       .newsletter-top-btn {
         top: 1rem;
@@ -312,18 +448,73 @@
         padding: 0.45rem 0.85rem;
         font-size: 0.8rem;
       }
+
+      .container {
+        padding-top: 4rem;
+        padding-inline: 1rem;
+      }
+
       .card {
-        padding: 2.5rem 1.5rem;
+        padding: 2.2rem 1.4rem;
+        margin-bottom: 2.4rem;
       }
+
+      .card h2 {
+        font-size: 1.85rem;
+      }
+
+      .card h3 {
+        font-size: 0.98rem;
+      }
+
+      .tagline {
+        font-size: 0.98rem;
+      }
+
+      .section {
+        padding-top: 3rem;
+      }
+
       .content-box {
-        padding: 1.5rem 1rem;
+        padding: 1.6rem 1.25rem;
+        margin: 1.5rem auto;
       }
+
+      .content-box h4 {
+        font-size: 1.2rem;
+      }
+
       .newsletter-row {
         flex-direction: column;
         align-items: stretch;
       }
+
       .newsletter-button {
         width: 100%;
+        text-align: center;
+        margin-top: 0.4rem;
+      }
+
+      .bottom-card {
+        padding: 1.25rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .light {
+        width: 220px;
+        height: 220px;
+        filter: blur(90px);
+      }
+
+      .background {
+        animation-duration: 60s; /* less motion on mobile */
+      }
+    }
+
+    /* Slight adjustments for larger desktops */
+    @media (min-width: 900px) {
+      .container {
+        padding-top: 5rem;
       }
     }
   </style>
@@ -334,7 +525,6 @@
   <div class="light"></div>
   <div class="light"></div>
 
-  <!-- Top-right Newsletter button -->
   <a href="#newsletter" class="newsletter-top-btn">Newsletter</a>
 
   <header></header>
@@ -345,7 +535,8 @@
       <h3>Licensed Real Estate Consultant | Keller Williams</h3>
       <div class="divider"></div>
       <div class="tagline">
-        Guiding clients through buying, selling, and investing in <span class="highlight">Virginia</span> real estate with clarity and confidence.
+        Guiding clients through buying, selling, and investing in
+        <span class="highlight">Virginia</span> real estate with clarity and confidence.
       </div>
     </div>
 
@@ -353,7 +544,7 @@
       <div class="content-box">
         <h4>Who I Am</h4>
         <div class="content-description">
-          As a full‑service real estate consultant, the focus is on honest guidance and calm, clear communication at every step.  
+          As a full‑service real estate consultant, the focus is on honest guidance and calm, clear communication at every step.
           From first‑time buyers to seasoned investors, each client receives straightforward advice built on local market knowledge and careful analysis.
         </div>
       </div>
@@ -384,9 +575,7 @@
       </div>
     </section>
 
-    <!-- Newsletter section with ID for smooth scroll -->
     <section id="newsletter" class="newsletter-section fade-in">
-      <!-- Minimal Newsletter Signup (Formspree) -->
       <form
         action="https://formspree.io/f/xqeznaae"
         method="POST"
@@ -403,27 +592,35 @@
             placeholder="Enter your email"
             required
             class="newsletter-input"
-          >
+          />
           <button type="submit" class="newsletter-button">
             Subscribe
           </button>
         </div>
         <small class="newsletter-note">
-          Subscribe to my email list to recieve occasional important updates (Unsubscribe at anytime)
+          Subscribe to my email list to receive occasional important updates (unsubscribe at any time).
         </small>
       </form>
     </section>
 
     <div class="bottom-card fade-in" id="contact-info">
-      kw<br>
+      kw<br />
       <div class="contact-details">
-        Office: <span class="highlight">4310 Prince William Pkwy, #200, Woodbridge, VA 22192</span><br>
-        Office Number: (703) 378-8810<br>
-        Direct: <span class="highlight">+1 (571) 999-4356</span><br>
-        Email: <span class="highlight" id="emailText">soliman@solimanre.com</span>
-        <button class="copy-btn" onclick="copyEmail()">Copy</button>
+        Office:
+        <span class="highlight">
+          4310 Prince William Pkwy, #200, Woodbridge, VA 22192
+        </span>
+        <br />
+        Office Number: (703) 378-8810<br />
+        Direct:
+        <span class="highlight">+1 (571) 999-4356</span><br />
+        Email:
+        <span class="highlight" id="emailText">soliman@solimanre.com</span>
+        <button class="copy-btn" type="button" onclick="copyEmail()">
+          Copy
+        </button>
         <span class="license-line">VA Real Estate License #0225267265</span>
-        <span class="license-line">Branch Office License #1234567890</span>
+        <span class="license-line">Branch Office License #0225238671</span>
         <div id="copiedMsg" class="copied">Copied!</div>
       </div>
     </div>
@@ -435,23 +632,26 @@
 
   <script>
     function copyEmail() {
-      const emailText = document.getElementById('emailText').textContent;
+      const emailText = document.getElementById("emailText").textContent;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(emailText).then(() => {
-          const msg = document.getElementById('copiedMsg');
-          msg.classList.add('show');
-          setTimeout(() => msg.classList.remove('show'), 2000);
+          const msg = document.getElementById("copiedMsg");
+          msg.classList.add("show");
+          setTimeout(() => msg.classList.remove("show"), 2000);
         });
       }
     }
 
     const fadeElements = document.querySelectorAll(".fade-in");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    }, { threshold: 0.15 });
-    fadeElements.forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.15 }
+    );
+    fadeElements.forEach((el) => observer.observe(el));
   </script>
 </body>
 </html>
